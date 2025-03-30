@@ -1,8 +1,8 @@
-# GitSwitch
+# GitSwap
 
 ## Manage Multiple GitHub Accounts on Mac
 
-GitSwitch is a Python-based CLI tool that simplifies the process of managing multiple GitHub accounts (for example, a personal and a work account) on one machine. It allows quick switching between multiple GitHub accounts by updating your Git config and SSH config as needed.
+GitSwap is a Python-based CLI tool that simplifies the process of managing multiple GitHub accounts (for example, a personal and a work account) on one machine. It allows quick switching between multiple GitHub accounts by updating your Git config and SSH config as needed.
 
 ---
 
@@ -19,7 +19,7 @@ GitSwitch is a Python-based CLI tool that simplifies the process of managing mul
 ## Installation
 
 ```bash
-pip install gitswitch
+pip install GitSwap
 ```
 
 ## Usage
@@ -27,15 +27,15 @@ pip install gitswitch
 ### Add a new account
 
 ```bash
-gitswitch add work -n "Your Name" -e "your.email@company.com" -k "~/.ssh/id_ed25519_work"
+GitSwap add work -n "Your Name" -e "your.email@company.com" -k "~/.ssh/id_ed25519_work"
 ```
 
-This creates an SSH config alias `github-work` and stores the profile in `~/.gitswitch.yml`.
+This creates an SSH config alias `github-work` and stores the profile in `~/.GitSwap.yml`.
 
 ### List configured accounts
 
 ```bash
-gitswitch list
+GitSwap list
 ```
 
 Output:
@@ -49,7 +49,7 @@ Configured identities:
 ### Switch global identity
 
 ```bash
-gitswitch use work --global
+GitSwap use work --global
 ```
 
 This sets your global `user.name` and `user.email` to the work profile.
@@ -58,7 +58,7 @@ This sets your global `user.name` and `user.email` to the work profile.
 
 ```bash
 cd ~/projects/personal/MyProj
-gitswitch use personal -l
+GitSwap use personal -l
 ```
 
 This only changes the Git config in the current repository's `.git/config`.
@@ -66,20 +66,20 @@ This only changes the Git config in the current repository's `.git/config`.
 ### Remove an identity
 
 ```bash
-gitswitch remove work
+GitSwap remove work
 ```
 
-This deletes the "work" entry from `~/.gitswitch.yml` and removes the corresponding block from `~/.ssh/config`.
+This deletes the "work" entry from `~/.GitSwap.yml` and removes the corresponding block from `~/.ssh/config`.
 
 ## How It Works
 
 ### Git Identity
 
-Git uses `user.name` and `user.email` settings to identify the author of commits. GitSwitch updates these settings either globally or locally for one repository.
+Git uses `user.name` and `user.email` settings to identify the author of commits. GitSwap updates these settings either globally or locally for one repository.
 
 ### SSH Key Management
 
-To handle multiple accounts on GitHub, SSH keys are used to authenticate as different users. GitSwitch uses SSH host aliases, such as `github-work` or `github-personal`, to point to GitHub but with specific SSH keys.
+To handle multiple accounts on GitHub, SSH keys are used to authenticate as different users. GitSwap uses SSH host aliases, such as `github-work` or `github-personal`, to point to GitHub but with specific SSH keys.
 
 For example, an entry in your SSH config might look like:
 
